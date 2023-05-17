@@ -110,7 +110,6 @@ jobs:
         run: |
           pwd ls -la
           ls -l
-          kubectl create secret docker-registry acr-secret --docker-server=$AZURE_CONTAINER_REGISTRY --docker-username=${{ secrets.ACR_USERNAME }} --docker-password=${{ secrets.ACR_PASSWORD }}
           kubectl get pod
           kubectl get secret
           kubectl apply -f ./k8s/
