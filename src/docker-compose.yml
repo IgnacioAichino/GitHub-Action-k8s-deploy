@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  myapi:
+    image: ${DOCKER_REGISTRY-}myapi
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+
+  myclient:
+    image: ${DOCKER_REGISTRY-}myclient
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
+
+  mydb:
+    image: mongo

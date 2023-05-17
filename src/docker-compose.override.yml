@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  myapi:
+    container_name: myapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://mydb:27017"
+    depends_on:
+      - mydb
+    ports:
+      - "8001:80"
+
+  myclient:
+    container_name: myclient
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "API_URL=http://myapi"
+    depends_on:
+      - mydb
+      - myapi
+    ports:
+      - "8000:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+ 
+  mydb:
+    container_name: mydb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${WEBAPP_STORAGE_HOME}/site:/data/dba
