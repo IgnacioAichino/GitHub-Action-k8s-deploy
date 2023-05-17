@@ -1,0 +1,43 @@
+name: Docker Build and Push CI
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3        
+    - name: Build and Push API
+      working-directory: ./src
+      env:
+        REGISTRY: apprepositoryimages.azurecr.io
+        IMAGE_NAME: myapi
+        TAG: ${{ github.sha }}
+      run: |
+        pwd ls -la
+        ls -l
+        docker build -f ./API/Dockerfile --tag $REGISTRY/$IMAGE_NAME . 
+        docker image ls
+        echo ${{ secrets.ACR_PASSWORD }} | docker login $REGISTRY --username ${{ secrets.ACR_USERNAME }} --password-stdin
+        docker push $REGISTRY/$IMAGE_NAME:$TAG
+        
+    - name: Build and Push Client
+      working-directory: ./src
+      env:
+        REGISTRY: apprepositoryimages.azurecr.io
+        IMAGE_NAME: myclient
+        TAG: latest
+      run: |
+        pwd ls -la
+        ls -l
+        docker build -f ./Client/Dockerfile --tag $REGISTRY/$IMAGE_NAME . 
+        docker image ls
+        echo ${{ secrets.ACR_PASSWORD }} | docker login $REGISTRY --username ${{ secrets.ACR_USERNAME }} --password-stdin
+        docker push $REGISTRY/$IMAGE_NAME:$TAG

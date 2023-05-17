@@ -44,7 +44,7 @@ Para compilar y crear nuestra imagenes de contenedores necesarias ejecutamos el 
  docker-compose  -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
 ```
 
-Algunos detalles como variables de entorno se encuntran en el file _docker-compose.override.yml_ hay que tener en cuenta por ejemplo la conexion a la base de datos. El punto de conexion sera el nombre de nuestro contenedor ejecutando. Otros detalles son los mapeo de puertos desde el entorno local al port del contenedor, como tambien los volumnes creado. 
+Algunos detalles como variables de entorno se encuentran en el file _docker-compose.override.yml_ hay que tener en cuenta por ejemplo la conexion a la base de datos. El punto de conexion sera el nombre de nuestro contenedor ejecutando. Otros detalles son los mapeo de puertos desde el entorno local al port del contenedor, como tambien los volumenes creados. 
 
 
 Una vez corriendo nuestro contenedores podemos hacer nuestras pruebas y cambios en un entorno local. 
@@ -54,3 +54,18 @@ Ejecutando el siguiente comandando veremos nuestros contendores ejecutando:
 ```
 ![client1](img/client1.png)
 ![api1](img/api1.png)
+
+## CI 
+
+A esta altura podemos crear un pipeline de integracion continua con GitHub Actions. Para ello volviendo a arquitectura propuesta necesitamos disponer de un ACR en Azure. Con este repositorio de imagenes disponible y privado para nosotros, el pipeline se encargara de hacer un Build de la API y del Client de su respectivo Dockerfile y con la imagen creada hacer un push al repositorio ACR.
+No es necesario enviar la imagen de mongo ya que no usamos un dockerfile. La imagen de MongoDB se encuentra disponible de su DockerHub Oficial. 
+![acr](img/ACR.png)
+
+En la seccion de Access Key de nuestro ACR habilataremos el acceso Admin y tendremos informacion como ***login server, username, password*** necesario para crear nuestro pipeline. 
+
+En la seccion Configuracion->Secrets->Action de nuestro repositorio configuraremos _Repository Secrets_ 
+
+Definimermos los siguientes secretos con el valor sacado de nuestro ACR en el portal: 
+
+- ACR_PASSWORD
+- ACR_USERNAME  
