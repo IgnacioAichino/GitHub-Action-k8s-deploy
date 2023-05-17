@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myclient-deployment
+  labels:
+    app: myclient
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myclient
+  template:
+    metadata:
+      labels:
+        app: myclient
+    spec:
+      containers:
+        - name: myclient
+          image: apprepositoryimages.azurecr.io/myclient:latest
+          imagePullPolicy: IfNotPresent          
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: API_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: api-configmap
+                    key: api_url
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "0.1"
+            limits:
+              memory: "128Mi"
+              cpu: "0.3"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myclient-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: myclient
+  ports:
+    - protocol: TCP
+      port: 80  
