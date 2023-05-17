@@ -33,7 +33,7 @@ jobs:
       env:
         REGISTRY: apprepositoryimages.azurecr.io
         IMAGE_NAME: myclient
-        TAG: latest
+        TAG: ${{ github.sha }}
       run: |
         pwd ls -la
         ls -l
