@@ -43,7 +43,7 @@ env:
   CLUSTER_NAME: "myAKSCluster"
 
 jobs:
-  build:
+  buildPROD:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3        
@@ -81,6 +81,7 @@ jobs:
       contents: read
       id-token: write
     runs-on: ubuntu-latest
+    needs: [buildPROD]
     steps:
       - name: "Login via Azure CLI"
         uses: azure/login@v1
