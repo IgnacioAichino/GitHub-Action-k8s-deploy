@@ -69,3 +69,6 @@ Definimermos los siguientes secretos con el valor sacado de nuestro ACR en el po
 
 - ACR_PASSWORD
 - ACR_USERNAME  
+
+Dentro de la carpeta ***/.github/workflows***  tenemos disponible nuestro pipelie CI que se encargara de hacer de construir nuestra imagen y pushearla a nuestro repositorio en Azure.
+En este caso, siguiendo la logica del pipeline y el flujo de trabajo que buscamos, se ejecutara cuando haya un push o pull request a la rama develop. Generando una image con un tag con el _github.sha_ de nuestro commit. Esto se hace de esta manera para tener una imagen creada en base a la version actual del commit en la rama de desarrollo.  Caso contrario sera cuando se haga un push o pull request a nuestra rama main productiva donde el pipeline sera otro que se vera mas adelante.
