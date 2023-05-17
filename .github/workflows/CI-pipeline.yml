@@ -23,7 +23,7 @@ jobs:
       run: |
         pwd ls -la
         ls -l
-        docker build -f ./API/Dockerfile --tag $REGISTRY/$IMAGE_NAME . 
+        docker build -f ./API/Dockerfile --tag $REGISTRY/$IMAGE_NAME:$TAG . 
         docker image ls
         echo ${{ secrets.ACR_PASSWORD }} | docker login $REGISTRY --username ${{ secrets.ACR_USERNAME }} --password-stdin
         docker push $REGISTRY/$IMAGE_NAME:$TAG
@@ -37,7 +37,7 @@ jobs:
       run: |
         pwd ls -la
         ls -l
-        docker build -f ./Client/Dockerfile --tag $REGISTRY/$IMAGE_NAME . 
+        docker build -f ./Client/Dockerfile --tag $REGISTRY/$IMAGE_NAME$TAG  . 
         docker image ls
         echo ${{ secrets.ACR_PASSWORD }} | docker login $REGISTRY --username ${{ secrets.ACR_USERNAME }} --password-stdin
         docker push $REGISTRY/$IMAGE_NAME:$TAG
