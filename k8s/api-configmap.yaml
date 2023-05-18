@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: gapi-configmap
 data:
-  api_url: http://api-service
+  api_url: http://myapi-service
