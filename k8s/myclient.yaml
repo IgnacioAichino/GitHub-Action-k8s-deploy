@@ -48,6 +48,7 @@ kind: Service
 metadata:
   name: myclient-service
 spec:
+  loadBalancerIP: 52.149.186.174
   type: LoadBalancer
   selector:
     app: myclient

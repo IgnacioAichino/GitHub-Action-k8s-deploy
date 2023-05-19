@@ -135,3 +135,9 @@ myclient-service   LoadBalancer   10.0.25.171    4.157.137.58   80:32450/TCP   3
 Como se ve asociamos nuestro pod como un servicio del tipo LoadBalancer y nos brinda una IP publica, que si vamos a nuestro buscado podemos ver ya desplegado nuestra cliente 
 
 ![client2](img/client2.png)
+
+
+## IP static
+
+Se agrego una IP static al loadbalcer del cliente, por lo que se procedio primero a crear una IP como recurso en el portal de Azure dentro del grupo de recursos de nuestro cluster. 
+De esta manera tambien se definio que esa ip es la que debe tomar cuando se levanta el servicio al hacer apply del deployment.
