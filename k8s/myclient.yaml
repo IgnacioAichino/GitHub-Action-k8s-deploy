@@ -17,7 +17,7 @@ spec:
       containers:
         - name: myclient
           image: apprepositoryimages.azurecr.io/myclient:latest
-          imagePullPolicy: IfNotPresent          
+          imagePullPolicy: "Always"          
           ports:
             - containerPort: 80
           env:
