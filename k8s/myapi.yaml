@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: myapi
-          image: apprepositoryimages.azurecr.io/myapi:latest
+          image: apprepositoryimages.azurecr.io/myapi:v3
           imagePullPolicy: IfNotPresent       
           ports:
             - containerPort: 80
