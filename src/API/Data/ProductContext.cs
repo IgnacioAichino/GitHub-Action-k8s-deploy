@@ -34,7 +34,7 @@ namespace API.Data
                 new Product()
                 {
                     Name = "IPhone X",
-                    Description = "Desarrollado por Apple INC. IMPORTADO",
+                    Description = "Desarrollado por Apple INC Y EXPORTADO",
                     ImageFile = "product-1.png",
                     Price = "950.00",
                     Category = "Smart Phone"
