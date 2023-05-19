@@ -53,7 +53,7 @@ jobs:
       env:
         REGISTRY: apprepositoryimages.azurecr.io
         IMAGE_NAME: myapi
-        TAG: v3
+        TAG: latest
       run: |
         pwd ls -la
         ls -l
@@ -67,7 +67,7 @@ jobs:
       env:
         REGISTRY: apprepositoryimages.azurecr.io
         IMAGE_NAME: myclient
-        TAG: v3
+        TAG: latest
       run: |
         pwd ls -la
         ls -l
