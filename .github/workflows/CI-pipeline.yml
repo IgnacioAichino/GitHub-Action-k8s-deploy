@@ -17,7 +17,7 @@ jobs:
     - name: Build and Push API
       working-directory: ./src
       env:
-        REGISTRY: apprepositoryimages.azurecr.io
+        REGISTRY: registrypj.azurecr.io
         IMAGE_NAME: myapi
         TAG: ${{ github.sha }}
       run: |
@@ -31,7 +31,7 @@ jobs:
     - name: Build and Push Client
       working-directory: ./src
       env:
-        REGISTRY: apprepositoryimages.azurecr.io
+        REGISTRY: registrypj.azurecr.io
         IMAGE_NAME: myclient
         TAG: ${{ github.sha }}
       run: |
