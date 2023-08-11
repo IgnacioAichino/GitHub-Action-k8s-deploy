@@ -41,7 +41,7 @@ env:
   CONTAINER_NAME_CLIENT: "myclient"
   CONTAINER_NAME_MONGO: "mongo"
   RESOURCE_GROUP: "Group-PJ"
-  CLUSTER_NAME: "ClusterPJ"
+  CLUSTER_NAME: "myClusterPJ"
 
 jobs:
   buildPROD:
