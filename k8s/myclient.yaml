@@ -5,15 +5,10 @@ metadata:
   labels:
     app: myclient
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: myclient
-  strategy: 
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 2
-      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -48,7 +43,6 @@ kind: Service
 metadata:
   name: myclient-service
 spec:
-  loadBalancerIP: 52.149.186.174
   type: LoadBalancer
   selector:
     app: myclient
