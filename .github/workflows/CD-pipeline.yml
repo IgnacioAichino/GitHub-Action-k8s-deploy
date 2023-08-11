@@ -40,8 +40,8 @@ env:
   CONTAINER_NAME_API: "myapi"
   CONTAINER_NAME_CLIENT: "myclient"
   CONTAINER_NAME_MONGO: "mongo"
-  RESOURCE_GROUP: "appGroup"
-  CLUSTER_NAME: "myAKSCluster"
+  RESOURCE_GROUP: "Group-PJ"
+  CLUSTER_NAME: "ClusterPJ"
 
 jobs:
   buildPROD:
