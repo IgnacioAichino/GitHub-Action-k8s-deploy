@@ -16,8 +16,13 @@ spec:
     spec:
       containers:
         - name: myapi
+<<<<<<< HEAD
           image: apprepositoryimages.azurecr.io/myapi:latest
           imagePullPolicy: "Always"       
+=======
+          image: registrypj.azurecr.io/myapi:latest
+          imagePullPolicy: IfNotPresent       
+>>>>>>> origin/develop
           ports:
             - containerPort: 80
           env:

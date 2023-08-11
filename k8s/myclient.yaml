@@ -21,8 +21,13 @@ spec:
     spec:
       containers:
         - name: myclient
+<<<<<<< HEAD
           image: apprepositoryimages.azurecr.io/myclient:latest
           imagePullPolicy: "Always"          
+=======
+          image: registrypj.azurecr.io/myclient:latest
+          imagePullPolicy: IfNotPresent          
+>>>>>>> origin/develop
           ports:
             - containerPort: 80
           env:

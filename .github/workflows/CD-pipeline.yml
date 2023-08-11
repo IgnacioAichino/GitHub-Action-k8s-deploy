@@ -36,7 +36,7 @@ on:
       branches: [ "main" ]
 
 env:
-  AZURE_CONTAINER_REGISTRY: "apprepositoryimages.azurecr.io"
+  AZURE_CONTAINER_REGISTRY: "registrypj.azurecr.io"
   CONTAINER_NAME_API: "myapi"
   CONTAINER_NAME_CLIENT: "myclient"
   CONTAINER_NAME_MONGO: "mongo"
@@ -51,7 +51,7 @@ jobs:
     - name: Build and Push API
       working-directory: ./src
       env:
-        REGISTRY: apprepositoryimages.azurecr.io
+        REGISTRY: registrypj.azurecr.io
         IMAGE_NAME: myapi
         TAG: latest
       run: |
@@ -65,7 +65,7 @@ jobs:
     - name: Build and Push Client
       working-directory: ./src
       env:
-        REGISTRY: apprepositoryimages.azurecr.io
+        REGISTRY: registrypj.azurecr.io
         IMAGE_NAME: myclient
         TAG: latest
       run: |
