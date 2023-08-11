@@ -5,7 +5,7 @@ metadata:
   labels:
     app: myclient
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: myclient
@@ -17,7 +17,7 @@ spec:
       containers:
         - name: myclient
           image: registrypj.azurecr.io/myclient:latest
-          imagePullPolicy: IfNotPresent          
+          imagePullPolicy: Always          
           ports:
             - containerPort: 80
           env:
