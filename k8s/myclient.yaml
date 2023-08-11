@@ -17,9 +17,7 @@ spec:
       containers:
         - name: myclient
           image: registrypj.azurecr.io/myclient:latest
-          imagePullPolicy: "Always"   
-          imagePullSecrets:
-            - name: acr-secret       
+          imagePullPolicy: "Always"         
           ports:
             - containerPort: 80
           env:
